@@ -41,35 +41,33 @@ int main( )
 
     Deck deck;
 
-
-
-
-    /*
     int numCards = 5;
-
     Player p1("Joe");
     Player p2("Jane");
-
-    Deck d;  //create a deck of cards
-    d.shuffle();
-
-    dealHand(d, p1, numCards);
-    dealHand(d, p2, numCards);
-
+    deck.shuffle();
+    dealHand(deck, p1, numCards);
+    dealHand(deck, p2, numCards);
     cout << p1.getName() <<" has : " << p1.showHand() << endl;
     cout << p2.getName() <<" has : " << p2.showHand() << endl;
 
-     */
+    Card chosenCard= p1.chooseCardFromHand();
+    cout << p1.getName() <<" asks- Do you have a " << chosenCard <<endl;
 
+    if(p2.cardInHand(chosenCard)){
+        cout << p2.getName() <<"says - Yes. I have a " << chosenCard << "."<< endl;
+        p2.removeCardFromHand(chosenCard);
+        p1.addCard(chosenCard);
+    }
+    else{
+        cout << p2.getName() <<"says- Go Fish"<< endl;
+    }
     return EXIT_SUCCESS;
 }
 
 
 
-void dealHand(Deck &d, Player &p, int numCards)
-{
-    /*
+void dealHand(Deck &d, Player &p, int numCards) {
+
     for (int i=0; i < numCards; i++)
         p.addCard(d.dealCard());
-        */
 }
