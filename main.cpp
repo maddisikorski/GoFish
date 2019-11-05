@@ -50,16 +50,21 @@ int main( )
     cout << p1.getName() <<" has : " << p1.showHand() << endl;
     cout << p2.getName() <<" has : " << p2.showHand() << endl;
 
-    Card chosenCard= p1.chooseCardFromHand();
-    cout << p1.getName() <<" asks- Do you have a " << chosenCard <<endl;
+    while(deck.size()!=0) {
+        Card chosenCard = p1.chooseCardFromHand();
+        int rankChosenCard = chosenCard.getRank();
 
-    if(p2.cardInHand(chosenCard)){
-        cout << p2.getName() <<"says - Yes. I have a " << chosenCard << "."<< endl;
-        p2.removeCardFromHand(chosenCard);
-        p1.addCard(chosenCard);
-    }
-    else{
-        cout << p2.getName() <<"says- Go Fish"<< endl;
+        cout << p1.getName() << " asks- Do you have a " << rankChosenCard << endl;
+
+        if (p2.cardInHand(chosenCard)) {
+            cout << p2.getName() << "says - Yes. I have a " << rankChosenCard << "." << endl;
+            p2.removeCardFromHand(chosenCard);
+            p1.addCard(chosenCard);
+        } else {
+            cout << p2.getName() << " says- Go Fish" << endl;
+            p1.addCard(deck.dealCard());
+        }
+
     }
     return EXIT_SUCCESS;
 }
