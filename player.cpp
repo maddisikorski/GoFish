@@ -52,7 +52,7 @@ bool Player::checkHandForBook(Card &c1, Card &c2){
 //Does the player have a card with the same rank as c in her hand?
 bool Player::rankInHand(Card c) const{
     for (int i = 0; i < myHand.size(); i++){
-        if (myHand[i] == c){
+        if (myHand[i].getRank() == c.getRank()){
             return true;
         }
     }
